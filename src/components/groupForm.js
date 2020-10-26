@@ -16,7 +16,6 @@ class GroupForm extends Component {
     console.log(event.target.children[1].value);
     event.target.children[1].value = "";
     event.target.children[3].value = ""
-
   }
 
   handleChange = event => {
