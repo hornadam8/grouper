@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class Group extends Component {
 
   handleClick = () => {
-    this.props.deleteGroup(this.props.group.groupName)
+    debugger;
+    this.props.deleteGroup(this.props.group.id)
   }
 
   render() {
@@ -12,9 +13,9 @@ class Group extends Component {
     return (
       <div>
         <li>
-          Name: {group.groupName}
+          Name: {group.name}
           <br/>
-          Description: {group.groupDescription}
+          Description: {group.description}
           <br/>
           <button onClick={this.handleClick}> Delete </button>
         </li>

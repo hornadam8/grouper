@@ -5,17 +5,28 @@ class GroupForm extends Component {
   constructor(){
     super();
     this.state = {
-      groupName: '',
-      groupDescription: ''
+      name: '',
+      description: ''
     }
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addGroup(this.state);
-    console.log(event.target.children[1].value);
-    event.target.children[1].value = "";
-    event.target.children[3].value = ""
+    let configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    };
+    fetch('http://localhost:3000/groups',configObj)
+      .then(r => {return r.json()})
+      .then(obj => {debugger;this.props.addGroup(obj)});
+    this.setState({
+      name: '',
+      description: ''
+    })
   }
 
   handleChange = event => {
@@ -33,17 +44,17 @@ class GroupForm extends Component {
           <label>Group name: </label>
           <input
             type="text"
-            name="groupName"
+            name="name"
             onChange={this.handleChange}
-            value={this.state.groupName}
+            value={this.state.name}
           />
           <br/>
           <label> Group description: </label>
           <input
             type="text_area"
-            name="groupDescription"
+            name="description"
             onChange={this.handleChange}
-            value={this.state.groupDescription}
+            value={this.state.description}
           />
           <br/>
           <input

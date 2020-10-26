@@ -7,11 +7,13 @@ const groupsReducer = (state = {groups:[], loading: false}, action) => {
         loading: true
       }
     case 'ADD_GROUP':
+      debugger;
       return {
         ...state,
         groups: [...state.groups, {
-          groupName: action.formData.groupName,
-          groupDescription: action.formData.groupDescription
+          id: action.formData.id,
+          name: action.formData.name,
+          description: action.formData.description
         }],
         loading: false
       }
