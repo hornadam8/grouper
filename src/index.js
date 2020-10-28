@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import groupsReducer from './reducers/groupsReducer.js';
 import reportWebVitals from './reportWebVitals';
+import thunk from 'redux-thunk';
 
-const store = createStore(groupsReducer)
+
+
+const store = createStore(groupsReducer,applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
+
   document.getElementById('root')
 );
 

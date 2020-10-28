@@ -22,7 +22,7 @@ class GroupForm extends Component {
     };
     fetch('http://localhost:3000/groups',configObj)
       .then(r => {return r.json()})
-      .then(obj => {debugger;this.props.addGroup(obj)});
+      .then(obj => {this.props.addGroup(obj)});
     this.setState({
       name: '',
       description: ''

@@ -3,13 +3,13 @@ import Group from './group';
 
 class Groups extends Component {
   render(){
-
     const { groups, deleteGroup } = this.props;
-    const groupList = groups.map(group => {
+    let groupList = groups.map(group => {
       return(
-        <Group group={group} deleteGroup={deleteGroup}/>
+        <Group key={group.id} group={group} deleteGroup={deleteGroup}/>
       )
     })
+
 
     return(
       <ul>

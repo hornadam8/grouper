@@ -7,7 +7,6 @@ const groupsReducer = (state = {groups:[], loading: false}, action) => {
         loading: true
       }
     case 'ADD_GROUP':
-      debugger;
       return {
         ...state,
         groups: [...state.groups, {
@@ -16,6 +15,24 @@ const groupsReducer = (state = {groups:[], loading: false}, action) => {
           description: action.formData.description
         }],
         loading: false
+      }
+    case 'DELETE_GROUP':
+      const newState = state.groups.filter(inst => inst.id !== action.id);
+      return{
+        ...state,
+        groups: newState
+      }
+    case 'START_ADDING_GROUPS_REQUEST':
+      return {
+        ...state,
+        astronauts: [...state.groups],
+        requesting: true
+      }
+    case 'ADD_GROUPS':
+      return {
+        ...state,
+        groups: action.groups,
+        requesting: false
       }
     default:
       return state;
