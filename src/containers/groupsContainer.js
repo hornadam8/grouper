@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import GroupForm from '../components/groupForm'
 import Groups from '../components/groups'
-import { connect } from 'react-redux'
-import { fetchGroups } from '../actions/fetchGroups'
-import GroupShowPage from '../components/groupShowPage.js';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import Group from '../components/group';
+import { connect } from 'react-redux';
+import {  fetchGroups } from '../actions/fetchGroups.js';
+
+
+
 
 class GroupsContainer extends Component {
 
@@ -17,17 +15,19 @@ class GroupsContainer extends Component {
   }
 
   render(){
-    let groups = this.props.groups;
+    const { groups, deleteGroup } = this.props;
+    let groupList = groups.map(group => {
+      return(
+        <Group key={group.id} group={group} deleteGroup={deleteGroup}/>
+      )
+    })
     console.log(this.props);
     return(
       <div className='GroupsContainer'>
       <GroupForm addGroup={this.props.addGroup} />
-      <Groups groups={groups} deleteGroup={this.props.deleteGroup} />
-      <Router>
-        <Switch>
-          <Route path="/groups/:id" component={()=><GroupShowPage groups={this.props.groups} />} />
-        </Switch>
-      </Router>,
+      <ul>
+        {groupList}
+      </ul>
       </div>
     )
   }

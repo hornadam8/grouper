@@ -7,14 +7,24 @@ import { createStore, applyMiddleware } from 'redux';
 import groupsReducer from './reducers/groupsReducer.js';
 import reportWebVitals from './reportWebVitals';
 import thunk from 'redux-thunk';
-
+import GroupsContainer from './containers/groupsContainer.js';
+import GroupShowPage from './components/groupShowPage.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 const store = createStore(groupsReducer,applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
+  <Router>
     <App />
+  </Router>
+
   </Provider>,
 
   document.getElementById('root')

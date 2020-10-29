@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Group extends Component {
 
@@ -28,9 +28,7 @@ class Group extends Component {
           <br/>
           Description: {group.description}
           <br/>
-          <Router>
             <Link to={`/groups/${group.id}`}>Show Page </Link>
-          </Router>
           <br/>
           <button onClick={this.handleClick}> Delete </button>
         </li>
