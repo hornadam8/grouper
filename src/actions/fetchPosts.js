@@ -1,8 +1,7 @@
-export function fetchPosts(group){
+export const fetchPosts = (groupId) => {
   return (dispatch) => {
-    dispatch({type: 'START_ADDING_GROUPS_REQUEST'});
-    fetch(`http://localhost:3000/groups/${group.id}/posts`)
+    fetch(`http://localhost:3000/groups/${groupId}/posts`)
       .then(r => {return r.json()})
-      .then(groups => dispatch({type: 'ADD_GROUPS',groups}));
+      .then(posts => dispatch({type: 'ADD_POSTS',posts}));
   }
 }

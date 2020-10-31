@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def index
-
+    group = Group.find_by(id: params[:group_id])
+    render json: group.posts
   end
 
 end

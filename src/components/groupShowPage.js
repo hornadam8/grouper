@@ -6,11 +6,14 @@ import { fetchPosts } from '../actions/fetchPosts.js';
 import PostForm from '../components/postForm.js';
 
 class GroupShowPage extends Component {
-  //componentDidMount(){
-    //fetchGroups()
-    //console.log('Group show page')
-  //}
+
+  componentDidMount(){
+    let groupId = parseInt(this.props.match.params.id,10);
+    this.props.fetchPosts(groupId)
+  };
+
   render(){
+
     let groups = this.props.groups;
     let group = groups.find(e => e.id == this.props.match.params.id);
 
@@ -19,7 +22,7 @@ class GroupShowPage extends Component {
         <h1>Show Page</h1>
         <h1>{group ? group.name : null}</h1>
         <p>{group ? group.description : null}</p>
-        {group ? <PostForm groupId={group.id}/> : null}
+        {group ? <PostForm groupId={group.id} addPost={this.props.addPost} groups={this.props.groups}/> : null}
         {group ? <PostsContainer posts={group.posts} addPost={this.props.addPost} deletePost={this.props.deletePost} groupId={group.id}/> : null}
       </div>
     )
@@ -28,14 +31,14 @@ class GroupShowPage extends Component {
 
 function mapStateToProps(state){
   return {
-    groups: state.groups,
-    posts: state.posts
+    groups: state.groups.groups,
+    posts: state.posts.posts
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    fetchPosts: () => dispatch(fetchPosts()),
+    fetchPosts: groupId => dispatch(fetchPosts(groupId)),
     addPost: formData => dispatch({type: 'ADD_POST', formData}),
     deletePost: id => dispatch({type: 'DELETE_GROUP',id}),
     fetchGroups: () => dispatch(fetchGroups()),

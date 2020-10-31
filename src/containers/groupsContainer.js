@@ -40,8 +40,8 @@ class GroupsContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    groups: state.groups,
-    posts: state.posts
+    groups: state.groups.groups,
+    posts: state.posts.posts
   }
 }
 

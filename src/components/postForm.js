@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 class PostForm extends Component {
 
   constructor(props){
+
     super(props);
     this.state = {
       title: '',
       content: '',
       groupId: props.groupId
-    }
+    };
   }
 
   handleSubmit = event => {
@@ -25,8 +26,8 @@ class PostForm extends Component {
       .then(r => {return r.json()})
       .then(obj => {
         this.props.addPost(obj);
-        let group = this.props.groupId;
-        group.posts.push(obj)
+        let group = this.props.groups.find(e => e.id == this.props.groupId);
+        group.posts = {...group.posts,obj}
       });
 
     this.setState({

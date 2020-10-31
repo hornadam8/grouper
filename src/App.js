@@ -8,7 +8,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { fetchGroups } from './actions/fetchGroups.js'
+import { fetchGroups } from './actions/fetchGroups.js';
+import { fetchPosts } from './actions/fetchPosts.js';
 
 
 
@@ -35,12 +36,14 @@ class App extends Component {
 
 function mapStateToProps(state){
   return {
-    groups: state.groups
+    groups: state.groups.groups,
+    posts: state.posts.posts
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
+  fetchPosts: groupId => dispatch(fetchPosts(groupId)),
     fetchGroups: () => dispatch(fetchGroups()),
     addGroup: formData => dispatch({type: 'ADD_GROUP', formData}),
     deleteGroup: id => dispatch({type: 'DELETE_GROUP', id})

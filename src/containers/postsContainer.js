@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 class PostsContainer extends Component {
   render(){
     let postsList = [];
-    if (this.props.posts){
-      postsList = this.props.posts.map(post => {
+    if (this.props.posts.posts.length > 0){
+      postsList = this.props.posts.posts.map(post => {
         return(
           <Post key={post.id} post={post} groupId={this.props.groupId}/>
         )
