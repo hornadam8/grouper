@@ -4,6 +4,11 @@ import Groups from '../components/groups'
 import Group from '../components/group';
 import { connect } from 'react-redux';
 import {  fetchGroups } from '../actions/fetchGroups.js';
+import GroupShowPage from '../components/groupShowPage.js';
+import {
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 
@@ -35,7 +40,8 @@ class GroupsContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    groups: state.groups
+    groups: state.groups,
+    posts: state.posts
   }
 }
 

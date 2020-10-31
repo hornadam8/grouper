@@ -15,16 +15,17 @@ import { fetchGroups } from './actions/fetchGroups.js'
 class App extends Component {
 
   componentDidMount(){
-    let groups = this.props.groups
+    this.props.fetchGroups()
+    console.log('app.js')
   }
   render(){
-    debugger;
     return(
+
         <div className='App'>
         <h1>Welcome to Grouper!</h1>
         <br/>
         <Switch>
-          <Route exact path='/groups' render={(props)=><GroupsContainer />}/>
+          <Route exact path='/groups' render={(props)=><GroupsContainer {...props}/>}/>
           <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />} />
         </Switch>
     </div>

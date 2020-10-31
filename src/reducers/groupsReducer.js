@@ -12,7 +12,8 @@ const groupsReducer = (state = {groups:[], loading: false}, action) => {
         groups: [...state.groups, {
           id: action.formData.id,
           name: action.formData.name,
-          description: action.formData.description
+          description: action.formData.description,
+          posts: []
         }],
         loading: false
       }
