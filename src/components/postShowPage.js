@@ -5,25 +5,19 @@ import PostsContainer from '../containers/postsContainer.js';
 import { fetchPosts } from '../actions/fetchPosts.js';
 import PostForm from '../components/postForm.js';
 
-class GroupShowPage extends Component {
+class PostShowPage extends Component {
 
   componentDidMount(){
+    debugger;
     let groupId = parseInt(this.props.match.params.id,10);
     this.props.fetchPosts(groupId)
   };
 
   render(){
-
-    let groups = this.props.groups;
-    let group = groups.find(e => e.id == this.props.match.params.id);
-
+    debugger;
     return(
-      <div className="GroupShowPage">
-        <h1>Show Page</h1>
-        <h1>{group ? group.name : null}</h1>
-        <p>{group ? group.description : null}</p>
-        {group ? <PostForm groupId={group.id} addPost={this.props.addPost} groups={this.props.groups}/> : null}
-        {group ? <PostsContainer posts={group.posts} addPost={this.props.addPost} deletePost={this.props.deletePost} groupId={group.id}/> : null}
+      <div className="PostShowPage">
+      {this.props}
       </div>
     )
   }
@@ -48,4 +42,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(GroupShowPage);
+export default connect(mapStateToProps,mapDispatchToProps)(PostShowPage);

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GroupsContainer from './containers/groupsContainer.js';
 import GroupShowPage from './components/groupShowPage.js';
+import PostShowPage from './components/postShowPage.js';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  withRouter
 } from 'react-router-dom';
 import { fetchGroups } from './actions/fetchGroups.js';
 import { fetchPosts } from './actions/fetchPosts.js';
@@ -27,7 +29,8 @@ class App extends Component {
         <br/>
         <Switch>
           <Route exact path='/groups' render={(props)=><GroupsContainer {...props}/>}/>
-          <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />} />
+          <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />}/>
+          <Route path="/groups/:id/posts/:id" render={(props) => <PostShowPage {...props}/>}/>
         </Switch>
     </div>
     );
@@ -43,7 +46,9 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-  fetchPosts: groupId => dispatch(fetchPosts(groupId)),
+    addPost: formData => dispatch({type: 'ADD_POST', formData}),
+    deletePost: id => dispatch({type: 'DELETE_POST', id}),
+    fetchPosts: groupId => dispatch(fetchPosts(groupId)),
     fetchGroups: () => dispatch(fetchGroups()),
     addGroup: formData => dispatch({type: 'ADD_GROUP', formData}),
     deleteGroup: id => dispatch({type: 'DELETE_GROUP', id})
@@ -53,4 +58,4 @@ function mapDispatchToProps(dispatch){
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

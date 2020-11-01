@@ -29,10 +29,12 @@ class GroupsContainer extends Component {
     console.log(this.props);
     return(
       <div className='GroupsContainer'>
-      <GroupForm addGroup={this.props.addGroup} />
-      <ul>
-        {groupList}
-      </ul>
+        <center>
+          <GroupForm addGroup={this.props.addGroup} />
+          <ul>
+            {groupList}
+          </ul>
+        </center>
       </div>
     )
   }

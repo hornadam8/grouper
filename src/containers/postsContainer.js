@@ -9,7 +9,7 @@ class PostsContainer extends Component {
     if (this.props.posts.posts.length > 0){
       postsList = this.props.posts.posts.map(post => {
         return(
-          <Post key={post.id} post={post} groupId={this.props.groupId}/>
+          <Post key={post.id} post={post} groupId={this.props.groupId} deletePost={this.props.deletePost}/>
         )
       })
     }

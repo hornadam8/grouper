@@ -39,6 +39,7 @@ class GroupForm extends Component {
   render(){
     return(
       <div className='GroupForm'>
+      <center>
         <h3>Create a new group:</h3>
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>Group name: </label>
@@ -50,8 +51,7 @@ class GroupForm extends Component {
           />
           <br/>
           <label> Group description: </label>
-          <input
-            type="text_area"
+          <textarea
             name="description"
             onChange={this.handleChange}
             value={this.state.description}
@@ -62,6 +62,7 @@ class GroupForm extends Component {
             value='Submit'
           />
         </form>
+        </center>
       </div>
     )
   }
