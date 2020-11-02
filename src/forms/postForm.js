@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 class PostForm extends Component {
 
@@ -49,6 +50,7 @@ class PostForm extends Component {
       <h3>Create a new post:</h3>
       <form onSubmit={event => this.handleSubmit(event)}>
         <label>Title: </label>
+        <br/>
         <input
           type="hidden"
           name="groupId"
@@ -62,8 +64,8 @@ class PostForm extends Component {
         />
         <br/>
         <label> Content: </label>
-        <input
-          type="text_area"
+        <br/>
+        <textarea
           name="content"
           onChange={this.handleChange}
           value={this.state.content}

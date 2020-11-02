@@ -8,13 +8,8 @@ import groupsReducer from './reducers/groupsReducer.js';
 import postsReducer from './reducers/postsReducer.js';
 import reportWebVitals from './reportWebVitals';
 import thunk from 'redux-thunk';
-import GroupsContainer from './containers/groupsContainer.js';
-import GroupShowPage from './components/groupShowPage.js';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router
 } from 'react-router-dom';
 
 

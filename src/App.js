@@ -4,10 +4,8 @@ import GroupsContainer from './containers/groupsContainer.js';
 import GroupShowPage from './components/groupShowPage.js';
 import PostShowPage from './components/postShowPage.js';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   withRouter
 } from 'react-router-dom';
 import { fetchGroups } from './actions/fetchGroups.js';
@@ -29,8 +27,9 @@ class App extends Component {
         <br/>
         <Switch>
           <Route exact path='/groups' render={(props)=><GroupsContainer {...props}/>}/>
-          <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />}/>
           <Route path="/groups/:id/posts/:id" render={(props) => <PostShowPage {...props}/>}/>
+          <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />}/>
+
         </Switch>
     </div>
     );

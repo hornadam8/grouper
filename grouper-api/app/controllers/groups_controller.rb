@@ -11,8 +11,6 @@ class GroupsController < ApplicationController
     render json: groups
   end
 
-  def show
-  end
 
   def destroy
     group = Group.find(params[:id])

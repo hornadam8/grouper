@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 class Post extends Component {
 
@@ -7,7 +8,6 @@ class Post extends Component {
     let id = this.props.post.id
     this.props.deletePost(id)
     let groupId = this.props.groupId
-    debugger;
 
     let configObj = {
       method: "DELETE",
@@ -27,7 +27,7 @@ class Post extends Component {
         <h3>{post.title}</h3>
         <p>{post.content}</p>
         <br/>
-          <Link to={`/groups/${this.props.groupId}/posts/${this.props.post.id}`}> Show Page </Link>
+        <Link to={`/groups/${this.props.groupId}/posts/${this.props.post.id}`}> Show Page </Link>
         <br/>
         <button onClick={this.handleClick}> Delete </button>
       </div>

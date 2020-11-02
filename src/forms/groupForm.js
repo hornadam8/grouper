@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css'
 
 
 class GroupForm extends Component {
@@ -43,6 +44,7 @@ class GroupForm extends Component {
         <h3>Create a new group:</h3>
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>Group name: </label>
+          <br/>
           <input
             type="text"
             name="name"
@@ -51,6 +53,7 @@ class GroupForm extends Component {
           />
           <br/>
           <label> Group description: </label>
+          <br/>
           <textarea
             name="description"
             onChange={this.handleChange}

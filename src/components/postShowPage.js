@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {  fetchGroups } from '../actions/fetchGroups.js';
-import PostsContainer from '../containers/postsContainer.js';
 import { fetchPosts } from '../actions/fetchPosts.js';
-import PostForm from '../components/postForm.js';
+import CommentForm from '../forms/commentForm.js';
+import CommentsContainer from '../containers/commentsCoontainer.js';
 
 class PostShowPage extends Component {
 
-  componentDidMount(){
-    debugger;
-    let groupId = parseInt(this.props.match.params.id,10);
-    this.props.fetchPosts(groupId)
-  };
 
   render(){
+    let post = this.props.posts.find(e => e.id == this.props.match.params.id);
     debugger;
     return(
       <div className="PostShowPage">
-      {this.props}
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
+        {post ? <CommentForm postId={post.id}/> : null}
+        {post ? <CommentsContainer postId={post.id}/> : null}
       </div>
     )
   }

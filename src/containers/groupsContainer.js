@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import GroupForm from '../components/groupForm'
-import Groups from '../components/groups'
+import GroupForm from '../forms/groupForm';
 import Group from '../components/group';
 import { connect } from 'react-redux';
 import {  fetchGroups } from '../actions/fetchGroups.js';
-import GroupShowPage from '../components/groupShowPage.js';
-import {
-  Route,
-  Link
-} from 'react-router-dom';
 
 
 

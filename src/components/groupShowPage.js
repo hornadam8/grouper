@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {  fetchGroups } from '../actions/fetchGroups.js';
 import PostsContainer from '../containers/postsContainer.js';
 import { fetchPosts } from '../actions/fetchPosts.js';
-import PostForm from '../components/postForm.js';
+import PostForm from '../forms/postForm.js';
 
 class GroupShowPage extends Component {
 
@@ -19,10 +19,10 @@ class GroupShowPage extends Component {
 
     return(
       <div className="GroupShowPage">
-        <h1>Show Page</h1>
         <h1>{group ? group.name : null}</h1>
         <p>{group ? group.description : null}</p>
         {group ? <PostForm groupId={group.id} addPost={this.props.addPost} groups={this.props.groups}/> : null}
+        <h3>Most recent posts: </h3>
         {group ? <PostsContainer posts={group.posts} addPost={this.props.addPost} deletePost={this.props.deletePost} groupId={group.id}/> : null}
       </div>
     )
