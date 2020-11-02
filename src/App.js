@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import { fetchGroups } from './actions/fetchGroups.js';
 import { fetchPosts } from './actions/fetchPosts.js';
+import { fetchComments } from './actions/fetchComments.js';
 
 
 
@@ -17,7 +18,6 @@ class App extends Component {
 
   componentDidMount(){
     this.props.fetchGroups()
-    console.log('app.js')
   }
   render(){
     return(
@@ -39,12 +39,15 @@ class App extends Component {
 function mapStateToProps(state){
   return {
     groups: state.groups.groups,
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    comments: state.comments.comments
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
+    fetchComments: (groupId,postId) => dispatch(fetchComments(groupId,postId)),
+    addComment: formData => dispatch({type: 'ADD_COMMENT', formData}),
     addPost: formData => dispatch({type: 'ADD_POST', formData}),
     deletePost: id => dispatch({type: 'DELETE_POST', id}),
     fetchPosts: groupId => dispatch(fetchPosts(groupId)),

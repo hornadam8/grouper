@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_195424) do
+ActiveRecord::Schema.define(version: 2020_11_02_094205) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "post_id"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"

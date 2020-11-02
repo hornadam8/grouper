@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import groupsReducer from './reducers/groupsReducer.js';
 import postsReducer from './reducers/postsReducer.js';
+import commentsReducer from './reducers/commentsReducer.js'
 import reportWebVitals from './reportWebVitals';
 import thunk from 'redux-thunk';
 import {
@@ -15,7 +16,8 @@ import {
 
 const rootReducer = combineReducers({
   groups: groupsReducer,
-  posts: postsReducer
+  posts: postsReducer,
+  comments: commentsReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk));

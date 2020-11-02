@@ -13,7 +13,8 @@ const postsReducer = (state = {posts:[], loading: false}, action) => {
           id: action.formData.id,
           title: action.formData.title,
           content: action.formData.content,
-          groupId: action.groupId
+          groupId: action.groupId,
+          comments: []
         }],
         loading: false
       }
@@ -22,12 +23,6 @@ const postsReducer = (state = {posts:[], loading: false}, action) => {
       return{
         ...state,
         posts: newState
-      }
-    case 'START_ADDING_POSTS_REQUEST':
-      return {
-        ...state,
-        posts: [...state.posts],
-        requesting: true
       }
     case 'ADD_POSTS':
       return {

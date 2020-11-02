@@ -4,6 +4,9 @@ import { fetchPosts } from '../actions/fetchPosts.js'
 import { connect } from 'react-redux';
 
 class PostsContainer extends Component {
+  componentDidMount(){
+    this.props.fetchPosts(this.props.groupId)
+  }
   render(){
     let postsList = [];
     if (this.props.posts.posts.length > 0){
@@ -30,7 +33,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    fetchPosts: () => dispatch(fetchPosts()),
+    fetchPosts: groupId => dispatch(fetchPosts(groupId)),
     addPost: formData => dispatch({type: 'ADD_POST', formData}),
     deletePost: id => dispatch({type: 'DELETE_POST', id})
   }
