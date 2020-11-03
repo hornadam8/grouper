@@ -27,6 +27,9 @@ class PostShowPage extends Component {
         <p>{post ? post.content : null}</p>
         <br/>
         {post ? <CommentForm posts={this.props.posts} postId={post.id} groupId={parseInt(this.props.match.url.split('/')[2],10)} addComment={this.props.addComment}/> : null}
+        <br/>
+        <h4>Comments</h4>
+        <br/>
         {post ? <CommentsContainer groupId={parseInt(this.props.match.url.split('/')[2],10)} postId={post.id}/> : null}
       </div>
     )

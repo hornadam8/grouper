@@ -23,11 +23,11 @@ class Post extends Component {
   render(){
     let post = this.props.post
     return(
-      <div className="Post">
+      <div className="Post" style={{backgroundColor: 'grey', borderRadius: '25px'}}>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
         <br/>
-        <Link to={`/groups/${this.props.groupId}/posts/${this.props.post.id}`}> Show Page </Link>
+        <button id='PostShowLink'><Link to={`/groups/${this.props.groupId}/posts/${this.props.post.id}`}>View this post</Link></button>
         <br/>
         <button onClick={this.handleClick}> Delete </button>
       </div>

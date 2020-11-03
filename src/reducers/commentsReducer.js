@@ -10,6 +10,7 @@ const commentsReducer = (state = {comments:[], loading: false}, action) => {
       return {
         ...state,
         comments: [...state.comments, {
+          id: action.formData.id,
           content: action.formData.content,
           postId: action.postId
         }],

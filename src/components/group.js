@@ -22,7 +22,7 @@ class Group extends Component {
   render() {
     let { group } = this.props;
     return (
-      <div>
+      <div className='Group' style={{backgroundColor: 'grey', borderRadius: '25px'}}>
         <li>
           Name: {group.name}
           <br/>

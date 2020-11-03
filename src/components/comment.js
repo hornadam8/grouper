@@ -22,7 +22,7 @@ class Comment extends Component {
   render(){
     let comment = this.props.comment;
     return(
-      <div className='Comment'>
+      <div className='Comment' style={{backgroundColor: 'grey', borderRadius: '25px'}}>
         <p>{comment.content}</p>
         <br/>
         <button onClick={this.handleClick}> Delete </button>

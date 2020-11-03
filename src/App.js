@@ -11,6 +11,14 @@ import {
 import { fetchGroups } from './actions/fetchGroups.js';
 import { fetchPosts } from './actions/fetchPosts.js';
 import { fetchComments } from './actions/fetchComments.js';
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button
+} from 'react-bootstrap';
+import './App.css';
 
 
 
@@ -21,15 +29,18 @@ class App extends Component {
   }
   render(){
     return(
-
-        <div className='App'>
+        <div className='App' style={{backgroundColor: 'black', color: 'white'}}>
+        <Navbar className='lightNav' expand="lg">
+          <Nav className="mr-auto">
+              <Button variant="outline-success"><Nav.Link href="/groups">Home</Nav.Link></Button>
+          </Nav>
+        </Navbar>
         <h1>Welcome to Grouper!</h1>
         <br/>
         <Switch>
-          <Route exact path='/groups' render={(props)=><GroupsContainer {...props}/>}/>
           <Route path="/groups/:id/posts/:id" render={(props) => <PostShowPage {...props}/>}/>
           <Route path="/groups/:id" render={(props) => <GroupShowPage {...props} />}/>
-
+          <Route exact path='/groups' render={(props)=><GroupsContainer {...props}/>}/>
         </Switch>
     </div>
     );
